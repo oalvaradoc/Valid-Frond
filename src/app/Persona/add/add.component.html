@@ -13,6 +13,13 @@
                     <label for="">Apellidos:</label>
                     <input [(ngModel)]="persona.apellidos" name="apellidos" type="text" class="form-control">
                 </div>
+                <div class="form-group centrar">
+                    <label for="">Procesado:</label>
+                    <label class="switch centrar">
+                        <input [(ngModel)]="persona.procesado" name="procesado" type="checkbox" disabled>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
                 <button (click)="Guardar(persona)" class="btn btn-danger">Guardar</button>
             </form>
         </div>

@@ -9,6 +9,7 @@
                     <th>ID</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
+                    <th>Procesado</th>
                     <th>Acciones</th>
                 </thead>
                 <tbody>
@@ -16,6 +17,21 @@
                         <td>{{persona.id}}</td>
                         <td>{{persona.name}}</td>
                         <td>{{persona.apellidos}}</td>
+
+                        <ng-template *ngIf="persona.procesado;then showBlock; else notShowBlock">
+                        </ng-template>
+
+                        <ng-template #showBlock>
+                            <td>
+                                <input type="checkbox" id="checked_{{persona.id}}" ng-model="persona.procesado" (click)="Actualizar(persona);" checked>
+                            </td>
+                        </ng-template>
+
+                        <ng-template #notShowBlock>
+                            <td>
+                                <input type="checkbox" id="checked_{{persona.id}}" ng-model="persona.procesado" (click)="Actualizar(persona);">
+                            </td>
+                        </ng-template>
                         <td>
                             <button (click)="Editar(persona)" class="btn btn-warning">Editar</button>
                             <button (click)="Delete(persona)" class="btn btn-danger">Delete</button>
@@ -23,6 +39,7 @@
                     </tr>
                 </tbody>
             </table>
+            <button (click)="Procesado()" class="btn btn-danger">Procesado</button>
         </div>
     </div>
 

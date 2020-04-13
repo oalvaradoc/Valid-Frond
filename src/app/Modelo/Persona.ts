@@ -1,4 +1,6 @@
 export class Persona {
     id: number;
     name: string;
-    apellidos: string; }
+    apellidos: string;
+    procesado: boolean;
+}

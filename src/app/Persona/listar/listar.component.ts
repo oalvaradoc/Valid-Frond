@@ -11,12 +11,15 @@ import { Persona } from 'src/app/Modelo/Persona';
 export class ListarComponent implements OnInit {
 
   personas: Persona[];
+  persona: Persona = new Persona();
+  activo = true;
 
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
     this.service.getPersonas()
-    .subscribe(data => this.personas = data);
+    .subscribe(data => {this.personas = data;
+                        console.log(data); });
   }
 
   Editar(persona: Persona): void {
@@ -30,6 +33,25 @@ export class ListarComponent implements OnInit {
       this.personas = this.personas.filter(p => p !== persona);
       alert('Usuario eliminado ......');
     });
+  }
+
+  Actualizar(persona: Persona) {
+    const element = document.getElementById('checked_' + persona.id) as HTMLInputElement;
+
+    const isChecked = element.checked;
+
+    persona.procesado = isChecked;
+
+    this.service.updatePersona(persona)
+    .subscribe(data => {
+      this.persona = data;
+      console.log(data);
+    });
+  }
+
+  Procesado(): void {
+    this.ngOnInit();
+    alert( 'Se Actualizo con Exito...!!!');
   }
 
 }
