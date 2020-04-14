@@ -10,7 +10,6 @@
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Procesado</th>
-                    <th>Acciones</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let persona of personas" class="text-center">
@@ -32,10 +31,6 @@
                                 <input type="checkbox" id="checked_{{persona.id}}" ng-model="persona.procesado" (click)="Actualizar(persona);">
                             </td>
                         </ng-template>
-                        <td>
-                            <button (click)="Editar(persona)" class="btn btn-warning">Editar</button>
-                            <button (click)="Delete(persona)" class="btn btn-danger">Delete</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
